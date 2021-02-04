@@ -1,6 +1,6 @@
 # Photo reducer
 
-This program lets you reduce all photos from specified directory to given size in MB.
+This program lets you reduce all photos from specified directory to given size.
 You don't need to install anything to use it.
 Original photos will not be changed.
 Reduced photos will be created at <specified_directory>/reduced_photos.
