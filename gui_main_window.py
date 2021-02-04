@@ -751,7 +751,7 @@ class Ui_MainWindow(object):
         self.button_start_reducing.setText(_translate("MainWindow", "Start reducing..."))
         self.label_progress.setText(_translate("MainWindow", "Progress:"))
         self.label_converting_file.setText(_translate("MainWindow", "Converting file:"))
-        self.label_credits.setText(_translate("MainWindow", "Created by: github.com/dudek_mic"))
+        self.label_credits.setText(_translate("MainWindow", "Created by: github.com/dudekmichal"))
         self.label_version.setText(_translate("MainWindow", "v1.0.0"))
 
 
