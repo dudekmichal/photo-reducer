@@ -10,6 +10,10 @@ from PIL import Image, ExifTags
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 from gui_main_window import Ui_MainWindow
 
+
+BYTES_IN_MB = 1048576
+
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     """
     Class containing all methods using elements of the graphic interface.
@@ -21,9 +25,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.button_start_reducing.clicked.connect(self.start_converting)
         self.progressbar_reducing.setValue(0)
         if platform == "win32":
-            self.formats = ["jpg", "jpeg", "png"]
+            self.image_formats = ["jpg", "jpeg", "png"]
         else:
-            self.formats = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG"]
+            self.image_formats = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG"]
 
     def browse_directories(self):
         """
@@ -39,8 +43,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         photos_count = 0
         path = self.line_edit_dir_path.text()
-        for f in self.formats:
-            photos_count += len(glob.glob1(path,"*.{}".format(f)))
+        for image_format in self.image_formats:
+            photos_count += len(glob.glob1(path,"*.{}".format(image_format)))
         self.progressbar_reducing.setMaximum(photos_count)
         self.progressbar_reducing.setValue(0)
         self.label_photos_count.setText(str(photos_count))
@@ -68,9 +72,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not os.path.exists(dest_path):
             os.makedirs(dest_path)
 
-        max_size =  int(self.max_size_value_MB.value() * 1048576)
+        max_size =  int(self.max_size_value_MB.value() * BYTES_IN_MB)
 
-        for image_format in self.formats:
+        for image_format in self.image_formats:
             for filename in glob.glob('{}/*.{}'.format(path, image_format)):
                 self.label_converting_file.setText(
                     "Converting file: {}...".format(filename))
@@ -127,6 +131,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 dest_file, format="jpeg", quality=quality_best_acceptable)
         else:
             print("ERROR: No acceptable quality factor found.", file=stderr)
+
 
 if __name__ == '__main__':
     app = QApplication(argv)

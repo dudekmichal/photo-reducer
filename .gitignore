@@ -3,3 +3,4 @@ __pycache__
 *.spec
 build/
 dist/
+example_photos/reduced_photos/
