@@ -24,3 +24,4 @@ pip3 install -r requirements.txt
 ```bash
 pyinstaller photo-reducer.py --clean --noconfirm --noconsole --onefile --name photoreducer
 ```
+> **Note:** This project can be built on Windows, Mac OS, GNU/Linux, FreeBSD and every other OS supporting Python3.
